@@ -1,3 +1,5 @@
+import { Missile } from '../Missile';
+
 import * as THREE from 'three';
 import * as CANNON from 'cannon';
 
