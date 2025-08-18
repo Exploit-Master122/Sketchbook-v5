@@ -1,0 +1,279 @@
+/**
+ * Blood Red Ocean shader!
+ * 
+ * Credits  to Jonathan Blaire for: https://codepen.io/knoland  
+ * Original pen-drawn sprites by Knoland. https://codepen.io/knoland/pen/XKxAJb  
+ * 
+ * Adapted for Sketchbook by Jan Bláha.
+ * https://github.com/swift502/Sketchbook  
+ * 
+ * Modified to a better version,for a better world.
+ */
+
+.cubeWrap {        
+	-webkit-perspective: 800px;
+			perspective: 800px;
+	width: 300px;
+	overflow: hidden;
+	/* position: absolute!; */
+	-webkit-animation: bouncy 2s ease forwards;
+			animation: bouncy 2s ease forwards;
+}
+
+.cube {
+	margin: 3em auto;
+	width: 6em;
+	height: 6em;
+	-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+	-webkit-transform-origin: 50% 50% -3em;
+			transform-origin: 50% 50% -3em;
+	position: relative;
+	-webkit-animation: spin 4s linear infinite;
+			animation: spin 4s linear infinite;
+	-webkit-transform: rotateX(-50deg) rotateY(405deg);
+			transform: rotateX(-50deg) rotateY(405deg);
+}
+
+/* Create a 3D cube with blood red faces....... */
+.cube::before,
+.cube::after,
+.cube div {
+	position: absolute;
+	width: 6em;
+	height: 6em;
+	-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+	content: '';
+	display: block;
+}
+
+/* The front face */
+.cube::before {
+	background: linear-gradient(135deg, #8B0000, #660000);
+	-webkit-transform: translateZ(3em);
+			transform: translateZ(3em);
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Back face - darker blood red */
+.cube::after {
+	background: linear-gradient(135deg, #660000, #440000);
+	-webkit-transform: rotateY(180deg) translateZ(3em);
+			transform: rotateY(180deg) translateZ(3em);
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Right face - medium blood red */
+.cube div:first-child {
+	background: linear-gradient(135deg, #7A0000, #550000);
+	-webkit-transform: rotateY(90deg) translateZ(3em);
+			transform: rotateY(90deg) translateZ(3em);
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Left face - lighter blood red */
+.cube div:nth-child(2) {
+	background: linear-gradient(135deg, #990000, #770000);
+	-webkit-transform: rotateY(-90deg) translateZ(3em);
+			transform: rotateY(-90deg) translateZ(3em);
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Top face - bright blood red */
+.cube div:nth-child(3) {
+	background: linear-gradient(135deg, #AA0000, #880000);
+	-webkit-transform: rotateX(90deg) translateZ(3em);
+			transform: rotateX(90deg) translateZ(3em);
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Bottom face - darkest blood red */
+.cube div:nth-child(4) {
+	background: linear-gradient(135deg, #550000, #330000);
+	-webkit-transform: rotateX(-90deg) translateZ(3em);
+			transform: rotateX(-90deg) translateZ(3em);
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+@-webkit-keyframes spin {
+	0% {
+	  -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+			  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+	}
+	100% {
+	  -webkit-transform: rotateX(720deg) rotateY(360deg) rotateZ(0deg);
+			  transform: rotateX(720deg) rotateY(360deg) rotateZ(0deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+	  -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+			  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+	}
+	100% {
+	  -webkit-transform: rotateX(720deg) rotateY(360deg) rotateZ(0deg);
+			  transform: rotateX(720deg) rotateY(360deg) rotateZ(0deg);
+	}
+}
+
+@-webkit-keyframes bouncy {
+	/* up */
+	0% {
+	  -webkit-transform: translateY(-600px) scale(0.8, 1.2);
+			  transform: translateY(-600px) scale(0.8, 1.2);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	30% {
+	  -webkit-transform: translateY(0) scale(0.8, 1.2);
+			  transform: translateY(0) scale(0.8, 1.2);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* floor */
+	32% {
+	  -webkit-transform: translateY(0) scale(1, 0.8);
+			  transform: translateY(0) scale(1, 0.8);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* up */
+	45% {
+	  -webkit-transform: translateY(-100px) scale(0.9, 1.12);
+			  transform: translateY(-100px) scale(0.9, 1.1);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	60% {
+	  -webkit-transform: translateY(0) scale(0.9, 1.1);
+			  transform: translateY(0) scale(0.9, 1.1);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* floor */
+	62% {
+	  -webkit-transform: translateY(0) scale(1, 0.9);
+			  transform: translateY(0) scale(1, 0.9);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* up */
+	70% {
+	  -webkit-transform: translateY(-30px) scale(0.9, 1.1);
+			  transform: translateY(-30px) scale(0.9, 1.1);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	80% {
+	  -webkit-transform: translateY(0) scale(1, 1);
+			  transform: translateY(0) scale(1, 1);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* floor */
+	82% {
+	  -webkit-transform: translateY(0) scale(1, 0.95);
+			  transform: translateY(0) scale(1, 0.95);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* up */
+	85% {
+	  -webkit-transform: translateY(-10px) scale(0.98, 1.02);
+			  transform: translateY(-10px) scale(0.98, 1.02);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	90% {
+	  -webkit-transform: translateY(0) scale(1, 1);
+			  transform: translateY(0) scale(1, 1);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+}
+
+@keyframes bouncy {
+	/* up */
+	0% {
+	  -webkit-transform: translateY(-600px) scale(0.8, 1.2);
+			  transform: translateY(-600px) scale(0.8, 1.2);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	30% {
+	  -webkit-transform: translateY(0) scale(0.8, 1.2);
+			  transform: translateY(0) scale(0.8, 1.2);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* floor */
+	32% {
+	  -webkit-transform: translateY(0) scale(1, 0.8);
+			  transform: translateY(0) scale(1, 0.8);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* up */
+	45% {
+	  -webkit-transform: translateY(-100px) scale(0.9, 1.1);
+			  transform: translateY(-100px) scale(0.9, 1.1);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	60% {
+	  -webkit-transform: translateY(0) scale(0.9, 1.1);
+			  transform: translateY(0) scale(0.9, 1.1);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* floor */
+	62% {
+	  -webkit-transform: translateY(0) scale(1, 0.9);
+			  transform: translateY(0) scale(1, 0.9);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* up */
+	70% {
+	  -webkit-transform: translateY(-30px) scale(0.9, 1.1);
+			  transform: translateY(-30px) scale(0.9, 1.1);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	80% {
+	  -webkit-transform: translateY(0) scale(1, 1);
+			  transform: translateY(0) scale(1, 1);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* floor */
+	82% {
+	  -webkit-transform: translateY(0) scale(1, 0.95);
+			  transform: translateY(0) scale(1, 0.95);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+	/* up */
+	85% {
+	  -webkit-transform: translateY(-10px) scale(0.98, 1.02);
+			  transform: translateY(-10px) scale(0.98, 1.02);
+	  -webkit-animation-timing-function: ease-in;
+			  animation-timing-function: ease-in;
+	}
+	/* floor */
+	90% {
+	  -webkit-transform: translateY(0) scale(1, 1);
+			  transform: translateY(0) scale(1, 1);
+	  -webkit-animation-timing-function: ease-out;
+			  animation-timing-function: ease-out;
+	}
+}
